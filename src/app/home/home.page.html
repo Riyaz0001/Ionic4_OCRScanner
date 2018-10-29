@@ -1,12 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            OCR Scanner
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="clear" color="danger" slot="start" (click)="refresh();">
+                <ion-icon slot="icon-only" name="ios-refresh"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+
+    <!-- <ion-button expand="block" fill="solid" color="danger" (click)="chooseImage()">
+        <ion-icon slot="icon-only" name="images" color="light"></ion-icon> Select Image
+    </ion-button>
+    <ion-button expand="block" fill="solid" color="danger" (click)="recog()" [disabled]="!selectedImage">
+        <ion-icon slot="icon-only" name="barcode" color="light"></ion-icon> Recognize Text
+    </ion-button>
+    
+    <ion-row *ngIf="imageText">
+        <button ion-button (tap)="speak();">
+            <ion-icon slot="icon-only" name="ios-mic"></ion-icon>
+            Speak
+        </button>
+    </ion-row>
+
+    <img id="image" [src]="selectedImage" *ngIf="selectedImage">
+    <ion-card color="danger" text-center *ngIf="imageText">
+        <ion-card-header>
+            Text Result
+        </ion-card-header>
+
+        <ion-card-content> {{imageText}} </ion-card-content>
+    </ion-card> -->
+
+    <ion-button expand="full" fill="solid" color="danger" (click)="selectSource()">Select Image</ion-button>
+    <ion-button expand="full" fill="solid" color="danger" (click)="recognizeImage()" [disabled]="!selectedImage">Recognize Image</ion-button>
+
+    <img [src]="selectedImage" *ngIf="selectedImage">
+
+    <ion-card *ngIf="imageText">
+        <ion-card-header color="dark">
+            Image Text
+        </ion-card-header>
+        <ion-card-content color="dark">
+            {{ imageText }}
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
